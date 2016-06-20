@@ -8,7 +8,7 @@
 porterhau5: # replace this with your info
   name: "porterhau5"
   siterole: "webmaster"
-  uri: http://porterhau5.github.io/
+  uri: https://porterhau5.github.io/
   email:
   twitter: "@porterhau5"
 # you can add more authors here
