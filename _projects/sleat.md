@@ -202,20 +202,20 @@ Corp: 10.10.10.140 - CORPDOM\LPND01$
 Corp: 10.10.10.173 - CORPDOM\ESX01$
 Corp: 10.10.10.192 - CORPDOM\PSS2$
 Corp: 10.10.10.222 - CORPDOM\EFCT01$
-CDE: 10.10.200.153 - CORPDOM\vgokodbvo
+CDE: 10.10.200.153 - CORPDOM\atlfosvc
 CDE: 10.10.202.71 - CORPDOM\PBBCDB$
-CDE: 10.10.202.73 - CORPDOM\gkhujaniyozo
-Out: 10.10.21.16 - CORPDOM\lfisher
-Out: 10.10.21.17 - CORPDOM\FIM-EYJR$
+CDE: 10.10.202.73 - CORPDOM\cjones
+Out: 10.10.21.16 - CORPDOM\ajones
+Out: 10.10.21.17 - CORPDOM\ATL-EYJR$
 Out: 10.10.21.17 - CORPDOM\eyjr
-Out: 10.10.21.18 - CORPDOM\nutmrf
-Out: 10.10.21.18 - CORPDOM\FIM-nutmrf$
+Out: 10.10.21.18 - CORPDOM\mgiles
+Out: 10.10.21.18 - CORPDOM\ATL-mgiles$
 <snipped>
-Out: 10.9.66.38 - CORPDOM\ngrnob
-Out: 10.9.66.64 - CORPDOM\ETN-EVJSMH$
-Out: 10.9.86.15 - CORPDOM\dfodbmdbv
-Out: 172.16.0.133 - CORPDOM\COADOT1$
-Corp: 208.31.22.10 - CORPDOM\vgokodbvo
+Out: 10.9.66.38 - CORPDOM\gmaddux
+Out: 10.9.66.64 - CORPDOM\GWI-AAA$
+Out: 10.9.86.15 - CORPDOM\kmillwood
+Out: 172.16.0.133 - CORPDOM\MIS-AA$
+Corp: 208.31.22.10 - CORPDOM\atlfosvc
 
 Counts:
 CDE:          13
@@ -228,20 +228,20 @@ Run: neato -T png -O inscope.dot && neato -T png -O outscope.dot
 This output can be filtered using various options. For example, filtering out corporate hosts:
 {% highlight shell %}
 $ ruby sleat-analyze.rb -c CORPDOM-logons.csv corp-vlans.txt cde-vlans.txt
-CDE: 10.10.200.153 - CORPDOM\vgokodbvo
+CDE: 10.10.200.153 - CORPDOM\atlfosvc
 CDE: 10.10.202.71 - CORPDOM\PBBCDB$
-CDE: 10.10.202.73 - CORPDOM\gkhujaniyozo
-Out: 10.10.21.16 - CORPDOM\lfisher
-Out: 10.10.21.17 - CORPDOM\FIM-EYJR$
+CDE: 10.10.202.73 - CORPDOM\cjones
+Out: 10.10.21.16 - CORPDOM\ajones
+Out: 10.10.21.17 - CORPDOM\ATL-EYJR$
 Out: 10.10.21.17 - CORPDOM\eyjr
-Out: 10.10.21.18 - CORPDOM\nutmrf
-Out: 10.10.21.18 - CORPDOM\FIM-nutmrf$
+Out: 10.10.21.18 - CORPDOM\mgiles
+Out: 10.10.21.18 - CORPDOM\ATL-mgiles$
 <snipped>
-Out: 10.9.66.38 - CORPDOM\ngrnob
-Out: 10.9.66.64 - CORPDOM\ETN-EVJSMH$
+Out: 10.9.66.38 - CORPDOM\gmaddux
+Out: 10.9.66.64 - CORPDOM\GWI-AAA$
 Out: 10.9.86.15 - CORPDOM\dfodbmdbv
-Out: 172.16.0.133 - CORPDOM\COADOT1$
-Corp: 208.31.22.10 - CORPDOM\vgokodbvo
+Out: 172.16.0.133 - CORPDOM\MIS-AA$
+Corp: 208.31.22.10 - CORPDOM\atlfosvc
 
 Counts:
 CDE:          13
@@ -299,7 +299,7 @@ $ ruby sleat-analyze.rb -p privusers.txt CORPDOM-logons.csv corp-vlans.txt cde-v
 Corp: 10.10.6.161 - CORPDOM\a_ffreeman
 Corp: 10.10.6.161 - CORPDOM\a_jteheran
 Corp: 10.10.6.161 - CORPDOM\a_oalbies
-Corp: 10.10.6.161 - CORPDOM\a_mswith
+Corp: 10.10.6.161 - CORPDOM\a_msmith
 Corp: 10.10.6.43 - CORPDOM\a_ffreeman
 
 Counts:
