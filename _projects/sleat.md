@@ -1,11 +1,7 @@
 ---
 layout: page-fullwidth
 title: "Sleat - Security Logon Event Analysis Tools"
-#subheadline: "How to use Feeling Responsive"
 teaser: "A collection of scripts for collecting, parsing, and analyzing Windows Logon Events."
-#permalink: "/documentation/"
-#header:
-#   image_fullwidth: "header_roadmap_2.jpg"
 ---
 <div class="row">
 <div class="medium-4 medium-push-8 columns" markdown="1">
@@ -24,7 +20,7 @@ teaser: "A collection of scripts for collecting, parsing, and analyzing Windows 
 
 ## Source Code   {#source}
 
-Latest development can be found on [Github](https://github.com/porterhau5/Sleat).
+Latest development can be found on <a href="https://github.com/porterhau5/sleat" target="_blank">GitHub</a>.
 
 ## Blog Posts   {#posts}
 
@@ -43,7 +39,7 @@ These scripts can be used for:
 Before performing analysis, logon events must first be collected from a Windows host. This can be done several ways:
 
 1. Using the included Powershell script, `sleat-collect.ps1`. This script will search the Security log on the local Windows host for Events with EventID 4624, pull specific fields (IP, Domain, Username, Workstation), sort and uniq the results, then write the output to a CSV file.
-2. Copying the raw Security log (Security.evtx) off the Windows host and parsing it locally. EVTX files are stored in a proprietary binary XML format, so parsing it requires outside help. A python tool called [python-evtx](https://github.com/williballenthin/python-evtx) works well for converting the binary data into an ASCII XML format. This dump of ASCII XML can then be parsed by `sleat-parse.py` to build a CSV file with the same fields produced by `sleat-collect.ps1`.
+2. Copying the raw Security log (Security.evtx) off the Windows host and parsing it locally. EVTX files are stored in a proprietary binary XML format, so parsing it requires outside help. A python tool called <a href="https://github.com/williballenthin/python-evtx" target="_blank">python-evtx</a> works well for converting the binary data into an ASCII XML format. This dump of ASCII XML can then be parsed by `sleat-parse.py` to build a CSV file with the same fields produced by `sleat-collect.ps1`.
 
 The resultant CSV file is then passed to `sleat-analyze.rb` for analysis, along with two other files:
 
@@ -108,7 +104,7 @@ PS C:\Users\Administrator\Desktop> type .\DC1-logons.csv
 
 If sleat-collect.ps1 was used to generate the CSV file, then this step can be skipped.
 
-If the Security.evtx log was copied off the Windows host (usually found at C:\Windows\System32\winevt\Logs\Security.evtx), then the first step in parsing it locally is to convert it from the proprietary binary XML format into an ASCII XML format. This can be done with [python-evtx](https://github.com/williballenthin/python-evtx):
+If the Security.evtx log was copied off the Windows host (usually found at C:\Windows\System32\winevt\Logs\Security.evtx), then the first step in parsing it locally is to convert it from the proprietary binary XML format into an ASCII XML format. This can be done with <a href="https://github.com/williballenthin/python-evtx" target="_blank">python-evtx</a>:
 {% highlight shell %}
 root@kali:~# git clone https://github.com/williballenthin/python-evtx.git
 Cloning into 'python-evtx'...
@@ -322,15 +318,6 @@ Example output of inscope.dot.png. Red nodes indicate CDE networks, light green 
 * Add filter to match (or exclude) specified domain names
 * Multithread powershell script to collect logs from multiple hosts simultaneously and write back to an open share (Routehunter-style)
 * Investigate other types of useful Events to analyze (currently just inspecting 4624)
-
-
-
-<!--
-## Background   {#background}
-
-
-
-## Example Usage   {#usage} -->
 
 
 
