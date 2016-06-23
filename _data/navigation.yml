@@ -15,8 +15,8 @@
   dropdown:
   - title: "Sleat"
     url: "/projects/sleat/"
-  - title: "Findadmin"
-    url: "/projects/findadmin/"
+  - title: "Wordsmith"
+    url: "/projects/wordsmith/"
 
 - title: About
   url: "/about/"
