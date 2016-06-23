@@ -25,7 +25,7 @@ widget2:
 widget3:
   title: "About"
   url: '/about/'
-  image: about_pic.jpg
+  image: about_303x182.png
   text: 'Just a guy with a beard who likes to understand how things work. And tacos. Lots of tacos.'
 #
 # Use the call for action to show a button on the frontpage
