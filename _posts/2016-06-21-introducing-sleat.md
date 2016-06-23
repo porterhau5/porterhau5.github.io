@@ -1,15 +1,15 @@
 ---
 layout: page
-#subheadline:  "Subheadline"
 title:  "Introducing Sleat: Security Logon Event Analysis Tools"
-teaser: "A toolkit for weaponizing Windows logs"
-#categories:
-#    - design
+teaser: "Sleat is a toolkit for weaponizing Windows logs, providing a suite of scripts for collecting, parsing, and analyzing Logon Events to perform scope validation, identify exploitation targets for pivoting attacks, visualizing network logons, and more."
 tags:
     - windows
     - pen-testing
     - sleat
 header: no
+image:
+    title: photo-sleet.jpeg
+    thumb: photo-sleet-thumb.jpeg
 author: porterhau5
 ---
 ### Quick Overview of Sleat

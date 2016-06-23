@@ -1,16 +1,17 @@
 ---
 layout: page
 title:  "Pivoting in Windows Using Native Port Forwarding"
-teaser: "No external tools required!"
+teaser: "Ever wanted to route traffic through a compromised Windows host without going through the hassle of setting up a Meterpreter session or uploading files which may get flagged by endpoint protection? Harness the power of netsh interface portproxy!"
 tags:
     - windows
     - pen-testing
     - pivoting
 header: no
+image:
+    title: photo-protractor.jpeg
+    thumb: photo-protractor-thumb.jpeg
 author: porterhau5
 ---
-Ever wanted to route traffic through a compromised Windows host without going through the hassle of setting up a Meterpreter session or uploading files which may get flagged by endpoint protection? Harness the power of `netsh interface portproxy`!
-
 `netsh interface portproxy` is baked right into Windows and has everything you need to set up a pivot point. It works by directing incoming traffic on a specified host:port to a destination host:port. Very simple, and very effective.
 
 ### Command
