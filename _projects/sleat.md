@@ -310,7 +310,7 @@ Each time the script is ran, two files are generated: inscope.dot and outscope.d
 
 Example output of inscope.dot.png. Red nodes indicate CDE networks, light green nodes indicate corporate networks:
 
-![inscope.dot.png rendering](images/inscope.dot.png)
+![inscope.dot.png rendering](/images/inscope.dot.png)
 
 ## TODO {#todo}
 * Currently only supports analyzing a single CSV. Extend it to analyze multiple CSVs, correlate, and build dot files showing mesh network of logons.
