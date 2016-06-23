@@ -2,32 +2,8 @@
 layout: default
 title: "Projects"
 header:
-  image_fullwidth: "photo-1454165205744-3b78555e5572.jpeg"
+  image_fullwidth: "photo-offices.jpeg"
 permalink: "/projects/"
-
-#layout: projectindex
-#header:
-#  image_fullwidth: header_unsplash_12.jpg
-#widget1:
-#  title: "Sleat"
-#  url: '/projects/sleat.html'
-#  image: widget-1-302x182.jpg
-#  text: "A collection of scripts for collecting, parsing, and analyzing Windows Logon Events."
-#widget2:
-#  title: "Projects"
-#  url: '/projects/'
-#  image: widget-github-303x182.jpg
-#  text: "Some of the projects I've been working on, including documentation and example usage."
-#widget3:
-#  title: "About"
-#  url: '/about.html'
-#  image: about_pic.jpg
-#  text: 'Just a guy with a beard who likes to understand how things work. And tacos. Lots of tacos.'
-#widget4:
-#  title: "Four"
-#  url: '/about.html'
-#  image: about_pic.jpg
-#  text: 'Four stuff text and description.'
 ---
 
 <div id="project-index" class="row">
