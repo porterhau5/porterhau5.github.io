@@ -1,10 +1,7 @@
 ---
 layout: page
-#subheadline:  "Subheadline"
 title:  "Pivoting in Windows Using Native Port Forwarding"
 teaser: "No external tools required!"
-#categories:
-#    - design
 tags:
     - windows
     - pen-testing
@@ -43,7 +40,7 @@ To give this a bit more context, here's how I utilized this feature during a rec
 
 I had obtained admin creds and had access to a Domain Controller via SMB. An Nmap scan showed that the network firewall allowed me to also get to 88/tcp, 389/tcp, and some of the high-range TCP ports (49152, 49153, etc.) on the DC as well. However, the network firewall didn’t allow me to reach back to my attack host, so reverse connections were out of the question. I couldn’t reach RDP, and all quick attempts to get a Meterpreter session going failed. I tried altering the local firewall, but it got me nowhere due to the restrictive network firewall rules. I really wanted to use this DC as a pivot point to get to some juicy targets that I suspected had RDP exposed.
 
-Within my [winexe](https://sourceforge.net/projects/winexe/) session, I ran netstat on the DC (10.10.10.10) to figure out which high-range TCP port would be available for me to bind to:
+Within my <a href="https://sourceforge.net/projects/winexe/" target="_blank">winexe</a> session, I ran netstat on the DC (10.10.10.10) to figure out which high-range TCP port would be available for me to bind to:
 {% highlight html %}
 C:\Windows\system32>netstat -an
 
@@ -143,6 +140,6 @@ Woo, thanks `netsh`!
 
 ### More Info
 
-This is an example of using `netsh interface portproxy` to establish pivoting routes over IPv4, but it's also possible over IPv6, and even IPv4-to-IPv6 (and vice versa). Check out the documentation from Microsoft [here](https://technet.microsoft.com/en-us/library/cc731068%28v=ws.10%29.aspx).
+This is an example of using `netsh interface portproxy` to establish pivoting routes over IPv4, but it's also possible over IPv6, and even IPv4-to-IPv6 (and vice versa). Check out the documentation from Microsoft <a href="https://technet.microsoft.com/en-us/library/cc731068%28v=ws.10%29.aspx" target="_blank">here</a>.
 
-This should work out of the box on Windows 2008 and later. It should also work on Windows 2003, but it may error out if IPv6 isn't supported on the host. More info [here](https://support.microsoft.com/en-us/kb/555744).
+This should work out of the box on Windows 2008 and later. It should also work on Windows 2003, but it may error out if IPv6 isn't supported on the host. More info <a href="https://support.microsoft.com/en-us/kb/555744" target="_blank">here</a>.
