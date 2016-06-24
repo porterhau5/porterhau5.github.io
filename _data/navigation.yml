@@ -2,6 +2,10 @@
   url: "/"
   side: left
 
+- title: About
+  url: "/about/"
+  side: left
+
 - title: Blog
   url: "/blog/"
   side: left
@@ -17,10 +21,6 @@
     url: "/projects/sleat/"
   - title: "Wordsmith"
     url: "/projects/wordsmith/"
-
-- title: About
-  url: "/about/"
-  side: left
 
 - title: Contact
   url: "/contact/"
