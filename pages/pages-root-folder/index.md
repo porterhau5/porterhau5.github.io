@@ -6,27 +6,22 @@
 #
 layout: frontpage
 header:
-#  image_fullwidth: header_unsplash_12.jpg
   image_fullwidth: "photo-1454165205744-3b78555e5572.jpeg"
 widget1:
-  title: "Blog"
-  url: '/blog/'
-#  image: widget-1-302x182.jpg
-#  image: "photo-39982a21-frontpage.jpeg"
-#  image: "photo-6HJtLkJSDqjqlE2NipEu_macbook-frontpage.jpg"
-  image: "photo-unsplash-kitsune-3-frontpage.jpg"  
-#  image: "photo-1453928582365-b6ad33cbcf64-frontpage.jpeg"
-  text: "Ramblings about penetration testing, scripts that make my life easier, and how bad the Braves will be this season."
-widget2:
-  title: "Projects"
-  url: '/projects/'
-  image: widget-github-303x182.jpg
-  text: "Some of the projects I've been working on, including documentation and example usage."
-widget3:
   title: "About"
   url: '/about/'
   image: about_303x182.png
   text: 'Just a guy with a beard who likes to understand how things work. And tacos. Lots of tacos.'
+widget2:
+  title: "Blog"
+  url: '/blog/'
+  image: "photo-unsplash-kitsune-3-frontpage.jpg"  
+  text: "Ramblings about penetration testing, scripts that make my life easier, and how bad the Braves will be this season."
+widget3:
+  title: "Projects"
+  url: '/projects/'
+  image: widget-github-303x182.jpg
+  text: "Some of the projects I've been working on, including documentation and example usage."
 #
 # Use the call for action to show a button on the frontpage
 #
