@@ -24,7 +24,7 @@ Latest development can be found on <a href="https://github.com/porterhau5/sleat"
 
 ## Blog Posts   {#posts}
 
-[Introducing Sleat](/introducing-sleat/) - an overview of the problem Sleat was written to solve, along with some examples of how it fits into the context of a penetration test.
+[Introducing Sleat](/blog/introducing-sleat/) - an overview of the problem Sleat was written to solve, along with some examples of how it fits into the context of a penetration test.
 
 ## Uses for Sleat {#uses}
 Sleat is a collection of scripts for collecting, parsing, and analyzing logon events from Windows Security logs.

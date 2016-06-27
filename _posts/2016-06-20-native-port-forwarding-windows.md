@@ -1,7 +1,9 @@
 ---
 layout: page
 title:  "Pivoting in Windows Using Native Port Forwarding"
-teaser: "Ever wanted to route traffic through a compromised Windows host without going through the hassle of setting up a Meterpreter session or uploading files which may get flagged by endpoint protection? Harness the power of netsh interface portproxy!"
+teaser: "Harness the power of netsh interface portproxy to natively pivot on Windows and stay under the AV radar during a penetration test."
+categories:
+    - blog
 tags:
     - windows
     - pen-testing
@@ -12,7 +14,7 @@ image:
     thumb: photo-protractor-thumb.jpeg
 author: porterhau5
 ---
-`netsh interface portproxy` is baked right into Windows and has everything you need to set up a pivot point. It works by directing incoming traffic on a specified host:port to a destination host:port. Very simple, and very effective.
+Ever wanted to route traffic through a compromised Windows host without going through the hassle of setting up a Meterpreter session or uploading files which may get flagged by endpoint protection? `netsh interface portproxy` is baked right into Windows and has everything you need to set up a pivot point. It works by directing incoming traffic on a specified host:port to a destination host:port. Very simple, and very effective.
 
 ### Command
 
@@ -35,9 +37,15 @@ listenaddress=0.0.0.0 connectport=8080 connectaddress=10.10.10.20
 
 This would bind locally to `0.0.0.0` (all network interfaces) on `1194/tcp` and route incoming connections to remote host `10.10.10.20:8080`. This particular example might be used to reach a web application that's sitting behind a restrictive firewall.
 
+### Why this technique?
+
+This pivoting technique is an example of living off the land to expand access with the added benefit of stealth. It comes in handy when options are limited or when there's a genuine concern of being noticed by AV or HIPS sitting on the endpoint. Using `netsh` to temporarily modify firewall tables is much less likely to be flagged by one of these products than a malicious or unknown executable, and it requires no uploading of software to the target host.
+
+From a detection standpoint, this technique demonstrates the need for baselining. Comparing network traffic and system behavior against a solid baseline in order to detect anomalous behavior should be part of any proper defense-in-depth strategy. Unfortunately, this is a concept foreign to many security teams. A <a href="https://twitter.com/pfizzell" target="_blank">colleague of mine</a> and I are currently researching and developing a simple tool to help organizations capture these kind of baselines - more info to come as we develop.
+
 ### Scenario
 
-To give this a bit more context, here's how I utilized this feature during a recent engagement:
+To give this technique a bit more context, here's how I utilized this feature during a recent engagement:
 
 I had obtained admin creds and had access to a Domain Controller via SMB. An Nmap scan showed that the network firewall allowed me to also get to 88/tcp, 389/tcp, and some of the high-range TCP ports (49152, 49153, etc.) on the DC as well. However, the network firewall didn’t allow me to reach back to my attack host, so reverse connections were out of the question. I couldn’t reach RDP, and all quick attempts to get a Meterpreter session going failed. I tried altering the local firewall, but it got me nowhere due to the restrictive network firewall rules. I really wanted to use this DC as a pivot point to get to some juicy targets that I suspected had RDP exposed.
 

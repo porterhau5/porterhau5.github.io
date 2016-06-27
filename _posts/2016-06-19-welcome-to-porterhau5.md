@@ -2,6 +2,8 @@
 layout: page
 title:  "Welcome to porterhau5.com"
 teaser: "Just another guy rambling about InfoSec."
+categories:
+    - blog
 tags:
     - misc
 author: porterhau5
