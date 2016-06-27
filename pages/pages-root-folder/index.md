@@ -43,3 +43,4 @@ permalink: /index.html
 #
 homepage: true
 ---
+<meta name="twitter:image" content="http://porterhau5.com/images/twitter-meta-homepage.png">
