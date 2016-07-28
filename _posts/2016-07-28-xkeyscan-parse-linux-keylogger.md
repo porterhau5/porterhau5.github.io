@@ -24,7 +24,7 @@ For archival's sake, the process boils down to:
 2. Find the XID of the keyboard to monitor
 3. `xinput test <XID>` - display input from the device
 
-XID is the "id" number associated with the desired keyboard input device. On my lab machine, this would id 12:
+XID is the "id" number associated with the desired keyboard input device. On my lab machine, this would be id 12:
 {% highlight html %}
 ⎡ Virtual core pointer                 	id=2	[master pointer  (3)]
 ⎜   ↳ Virtual core XTEST pointer     	id=4	[slave  pointer  (2)]
@@ -82,7 +82,7 @@ Notice how the keymap has multiple keysym columns for each keycode - this is due
 The next logical step is to leverage this keymap to automate the keycode-to-keysym conversion process.
 
 ### xkeyscan
-What I ended up creating was a fairly simple Python script called "xkeyscan", and it can be found <a href="https://github.com/porterhau5/xkeyscan" target="_blank">here on GitHub</a>.
+What I ended up creating was a fairly simple Python script called "xkeyscan" which can be found <a href="https://github.com/porterhau5/xkeyscan" target="_blank">here on GitHub</a>.
 
 {% highlight html %}
 $ python xkeyscan.py -h
@@ -135,7 +135,7 @@ Here's the tool in action:
 
   - Capturing is done in the right terminal (using `tee` to verify output)
   - Keystrokes being captured were performed in the top-left terminal
-  - xkeyscan is tailing xkey.log in the bottom-left terminal
+  - xkeyscan is tailing and parsing xkey.log in the bottom-left terminal
 
 <a href="{{ site.urlimg }}xkeyscan-ss.png" target="_blank"><img src="{{ site.urlimg }}xkeyscan-ss.png"></a>
 
