@@ -56,7 +56,7 @@ The scripts are broken up into 3 parts: Collect, Parse, and Analyze.
 This script should be copied to the target Windows host and executed as a user with Administrator privileges. You may need to Set-ExecutionPolicy Bypass before running. Pouring through hundreds of thousands of Events can take several minutes (on some hosts, can take upwards of 45 minutes). Although slow, this is less work than copying the Security.evtx file, converting it to ASCII XML, then parsing it.
 
 Example usage:
-{% highlight powershell %}
+{% highlight plaintext %}
 PS C:\Users\Administrator\Desktop> dir
 
 
@@ -105,7 +105,7 @@ PS C:\Users\Administrator\Desktop> type .\DC1-logons.csv
 If sleat-collect.ps1 was used to generate the CSV file, then this step can be skipped.
 
 If the Security.evtx log was copied off the Windows host (usually found at C:\Windows\System32\winevt\Logs\Security.evtx), then the first step in parsing it locally is to convert it from the proprietary binary XML format into an ASCII XML format. This can be done with <a href="https://github.com/williballenthin/python-evtx" target="_blank">python-evtx</a>:
-{% highlight shell %}
+{% highlight plaintext %}
 root@kali:~# git clone https://github.com/williballenthin/python-evtx.git
 Cloning into 'python-evtx'...
 remote: Counting objects: 896, done.
@@ -121,7 +121,7 @@ root@kali:~# python python-evtx/scripts/evtxdump.py Security.evtx > CORPDOM-dump
 {% endhighlight %}
 
 Once the data has been converted to ASCII XML, the relevant fields need to be pulled from the Logon events. This can be done by sleat-parse.py:
-{% highlight shell %}
+{% highlight plaintext %}
 $ python sleat-parse.py -h
 Usage: sleat-parse.py INFILE [-o OUTFILE]
 
@@ -145,7 +145,7 @@ Options:
 {% endhighlight %}
 
 Using sleat-parse.py to generate 'CORPDOM-logons.csv' from 'CORPDOM-dump.xml':
-{% highlight python %}
+{% highlight plaintext %}
 $ python sleat-parse.py CORPDOM-dump.xml -o CORPDOM-logons.csv
 Output file: CORPDOM-logons.csv
 {% endhighlight %}
@@ -154,7 +154,7 @@ The resulting CSV file can then be passed to sleat-analyze.rb.
 
 ### Analyze {#analyze}
 `sleat-analyze.rb` - Ruby script for validating scope, identifying locations of privileged users, building graphs of logon relationships, and more.
-{% highlight shell %}
+{% highlight plaintext %}
 $ ruby sleat-analyze.rb -h
 Usage: sleat-analyze.rb [options] <logons.csv> <corp networks> <cde networks>
     logons.csv    - a CSV produced by sleat-collect.ps1 or sleat-parse.py
@@ -188,7 +188,7 @@ Usage: sleat-analyze.rb [options] <logons.csv> <corp networks> <cde networks>
 {% endhighlight %}
 
 By default, the script shows a fully verbose dump:
-{% highlight shell %}
+{% highlight plaintext %}
 $ ruby sleat-analyze.rb CORPDOM-logons.csv corp-vlans.txt cde-vlans.txt
 Corp: 10.10.10.130 - CORPDOM\ORSK01$
 Corp: 10.10.10.131 - CORPDOM\ORSK02$
@@ -222,7 +222,7 @@ Run: neato -T png -O inscope.dot && neato -T png -O outscope.dot
 {% endhighlight %}
 
 This output can be filtered using various options. For example, filtering out corporate hosts:
-{% highlight shell %}
+{% highlight plaintext %}
 $ ruby sleat-analyze.rb -c CORPDOM-logons.csv corp-vlans.txt cde-vlans.txt
 CDE: 10.10.200.153 - CORPDOM\atlfosvc
 CDE: 10.10.202.71 - CORPDOM\PBBCDB$
@@ -248,7 +248,7 @@ Run: neato -T png -O inscope.dot && neato -T png -O outscope.dot
 {% endhighlight %}
 
 Filtering out machine accounts and domain\username from output:
-{% highlight shell %}
+{% highlight plaintext %}
 $ ruby sleat-analyze.rb -mu CORPDOM-logons.csv corp-vlans.txt cde-vlans.txt
 CDE: 10.10.200.153
 CDE: 10.10.200.153
@@ -277,7 +277,7 @@ Run: neato -T png -O inscope.dot && neato -T png -O outscope.dot
 {% endhighlight %}
 
 Instead of finding hosts based on their scope, you may want to find hosts that belong to a privileged user. Let's say a list of privileged users resides in a file named privusers.txt:
-{% highlight shell %}
+{% highlight plaintext %}
 $ cat privusers.txt
 CORPDOM\adback
 CORPDOM\a_ffreeman
@@ -290,7 +290,7 @@ CORPDOM\a_jteheran
 {% endhighlight %}
 
 This file can be passed with the -p option to only show logons for these users (domain names are ignored - this may help find accounts with the same name across different domains):
-{% highlight shell %}
+{% highlight plaintext %}
 $ ruby sleat-analyze.rb -p privusers.txt CORPDOM-logons.csv corp-vlans.txt cde-vlans.txt
 Corp: 10.10.6.161 - CORPDOM\a_ffreeman
 Corp: 10.10.6.161 - CORPDOM\a_jteheran
