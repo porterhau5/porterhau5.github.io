@@ -48,3 +48,11 @@ Sleat's parse script is for parsing raw EVTX files directly. For example, if a S
 
 ## More Info
 To get into the weeds and see how Sleat works, along with example usage and syntax, check out the [Sleat project page](/projects/sleat/). The source code for Sleat is hosted on GitHub <a href="https://github.com/porterhau5/sleat" target="_blank">here</a>.
+
+#### Share
+<ul class="share-buttons">
+  <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fporterhau5.com%2Fblog%2Fintroducing-sleat%2F&text=Introducing%20Sleat%3A%20Security%20Logon%20Event%20Analysis%20Tools:%20http%3A%2F%2Fporterhau5.com%2Fblog%2Fintroducing-sleat%2F&via=porterhau5" target="_blank" title="Tweet"><img alt="Tweet" src="{{ site.urlimg }}flat_web_icon_set/black/Twitter.png"></a></li>
+  <li><a href="http://www.reddit.com/submit?url=http%3A%2F%2Fporterhau5.com%2Fblog%2Fintroducing-sleat%2F&title=Introducing%20Sleat%3A%20Security%20Logon%20Event%20Analysis%20Tools" target="_blank" title="Submit to Reddit"><img alt="Submit to Reddit" src="{{ site.urlimg }}flat_web_icon_set/black/Reddit.png"></a></li>
+  <li><a href="https://getpocket.com/save?url=http%3A%2F%2Fporterhau5.com%2Fblog%2Fintroducing-sleat%2F&title=Introducing%20Sleat%3A%20Security%20Logon%20Event%20Analysis%20Tools" target="_blank" title="Add to Pocket"><img alt="Add to Pocket" src="{{ site.urlimg }}flat_web_icon_set/black/Pocket.png"></a></li>
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fporterhau5.com%2Fblog%2Fintroducing-sleat%2F&t=Introducing%20Sleat%3A%20Security%20Logon%20Event%20Analysis%20Tools" title="Share on Facebook" target="_blank"><img alt="Share on Facebook" src="{{ site.urlimg }}flat_web_icon_set/black/Facebook.png"></a></li>
+</ul>

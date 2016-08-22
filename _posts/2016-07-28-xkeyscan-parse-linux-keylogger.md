@@ -140,3 +140,11 @@ Here's the tool in action:
 <a href="{{ site.urlimg }}xkeyscan-ss.png" target="_blank"><img src="{{ site.urlimg }}xkeyscan-ss.png"></a>
 
 In its current iteration, the xmodmap legend is statically set. If a system's keymap differs, the codes array near the top of xkeyscan.py will need to be adjusted accordingly. My plan for v2 is for the script to take `xmodmap -pke` as input and dynamically generate the appropriate codes. Could even take it a step further and create an all-in-one tool for finding the appropriate device, starting the keylogger, and printing out the parsed result. If you'd like to tackle these changes yourself, feel free to send a <a href="https://github.com/porterhau5/xkeyscan" target="_blank">pull request</a>!
+
+#### Share
+<ul class="share-buttons">
+  <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fporterhau5.com%2Fblog%2Fxkeyscan-parse-linux-keylogger%2F&text=Using%20xkeyscan%20to%20Parse%20an%20X-Based%20Linux%20Keylogger:%20http%3A%2F%2Fporterhau5.com%2Fblog%2Fxkeyscan-parse-linux-keylogger%2F&via=porterhau5" target="_blank" title="Tweet"><img alt="Tweet" src="{{ site.urlimg }}flat_web_icon_set/black/Twitter.png"></a></li>
+  <li><a href="http://www.reddit.com/submit?url=http%3A%2F%2Fporterhau5.com%2Fblog%2Fxkeyscan-parse-linux-keylogger%2F&title=Using%20xkeyscan%20to%20Parse%20an%20X-Based%20Linux%20Keylogger" target="_blank" title="Submit to Reddit"><img alt="Submit to Reddit" src="{{ site.urlimg }}flat_web_icon_set/black/Reddit.png"></a></li>
+  <li><a href="https://getpocket.com/save?url=http%3A%2F%2Fporterhau5.com%2Fblog%2Fxkeyscan-parse-linux-keylogger%2F&title=Using%20xkeyscan%20to%20Parse%20an%20X-Based%20Linux%20Keylogger" target="_blank" title="Add to Pocket"><img alt="Add to Pocket" src="{{ site.urlimg }}flat_web_icon_set/black/Pocket.png"></a></li>
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fporterhau5.com%2Fblog%2Fxkeyscan-parse-linux-keylogger%2F&t=Using%20xkeyscan%20to%20Parse%20an%20X-Based%20Linux%20Keylogger" title="Share on Facebook" target="_blank"><img alt="Share on Facebook" src="{{ site.urlimg }}flat_web_icon_set/black/Facebook.png"></a></li>
+</ul>
