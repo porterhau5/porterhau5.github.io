@@ -152,3 +152,11 @@ Woo, thanks `netsh`!
 This is an example of using `netsh interface portproxy` to establish pivoting routes over IPv4, but it's also possible over IPv6, and even IPv4-to-IPv6 (and vice versa). Check out the documentation from Microsoft <a href="https://technet.microsoft.com/en-us/library/cc731068%28v=ws.10%29.aspx" target="_blank">here</a>.
 
 This should work out of the box on Windows 2008 and later. It should also work on Windows 2003, but it may error out if IPv6 isn't supported on the host. More info <a href="https://support.microsoft.com/en-us/kb/555744" target="_blank">here</a>.
+
+#### Share
+<ul class="share-buttons">
+  <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fporterhau5.com%2Fblog%2Fxkeyscan-parse-linux-keylogger%2F&text=Using%20xkeyscan%20to%20Parse%20an%20X-Based%20Linux%20Keylogger:%20http%3A%2F%2Fporterhau5.com%2Fblog%2Fxkeyscan-parse-linux-keylogger%2F&via=porterhau5" target="_blank" title="Tweet"><img alt="Tweet" src="{{ site.urlimg }}flat_web_icon_set/black/Twitter.png"></a></li>
+  <li><a href="http://www.reddit.com/submit?url=http%3A%2F%2Fporterhau5.com%2Fblog%2Fxkeyscan-parse-linux-keylogger%2F&title=Using%20xkeyscan%20to%20Parse%20an%20X-Based%20Linux%20Keylogger" target="_blank" title="Submit to Reddit"><img alt="Submit to Reddit" src="{{ site.urlimg }}flat_web_icon_set/black/Reddit.png"></a></li>
+  <li><a href="https://getpocket.com/save?url=http%3A%2F%2Fporterhau5.com%2Fblog%2Fxkeyscan-parse-linux-keylogger%2F&title=Using%20xkeyscan%20to%20Parse%20an%20X-Based%20Linux%20Keylogger" target="_blank" title="Add to Pocket"><img alt="Add to Pocket" src="{{ site.urlimg }}flat_web_icon_set/black/Pocket.png"></a></li>
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fporterhau5.com%2Fblog%2Fxkeyscan-parse-linux-keylogger%2F&t=Using%20xkeyscan%20to%20Parse%20an%20X-Based%20Linux%20Keylogger" title="Share on Facebook" target="_blank"><img alt="Share on Facebook" src="{{ site.urlimg }}flat_web_icon_set/black/Facebook.png"></a></li>
+</ul>
