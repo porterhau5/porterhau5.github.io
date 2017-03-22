@@ -15,7 +15,7 @@ author: porterhau5
 ---
 If you're new to BloodHound, I highly recommend checking out <a href="https://wald0.com/?p=68" target="_blank">this blog</a>, <a href="https://www.youtube.com/watch?v=wP8ZCczC1OU" target="_blank">this video</a>, or <a href="https://github.com/BloodHoundAD/BloodHound/wiki" target="_blank">this wiki</a> to familiarize yourself. The work being done by <a href="https://twitter.com/_wald0" target="_blank">_wald0</a>, <a href="https://twitter.com/CptJesus" target="_blank">CptJesus</a>, and <a href="https://twitter.com/harmj0y" target="_blank">harmj0y</a> is changing how red and blue teams approach risk in Active Directory environments.
 
-This post will cover my process as a penetration tester and how I've adapted BloodHound to enhance my workflow, complete with example usage and a source code release. It's a bit verbose -- I wanted to include why I saw an opportunity for these changes and the process for creating them. If you'd like to skip to the new features then start [here](#automating-the-workflow).
+This post will cover how I've adapted BloodHound to enhance my workflow during a penetration test, complete with example usage and a source code release. It's a bit verbose -- I wanted to include why I saw an opportunity for these changes and the process for creating them. If you'd like to skip to the new features then start [here](#automating-the-workflow).
 
 Custom Queries and database updates can be done independent of the BloodHound application. However, any modifications to BloodHound's display requires changing BloodHound's source. A quickstart guide for my Custom Queries and database updates can be found in the <a href="https://github.com/porterhau5/BloodHound-Owned" target="_blank">BloodHound-Owned GitHub repo</a>. My BloodHound UI enhancements, including <font color="#C900FF">node highlighting</font> and custom property display, can be found in this <a href="https://github.com/porterhau5/BloodHound" target="_blank">forked BloodHound repo</a>.
 
@@ -87,9 +87,9 @@ By making a few additions to the source, we can even integrate these properties 
 
 It's a useful way to document your compromise as you go, and a convenient visual aide when explaining your critical path of compromise to a client.
 
-Note, however, that modifications to the UI are only possible if you tweak BloodHound's source. I'm compiling all of my UI enhancements into a <a href="https://github.com/porterhau5/BloodHound" target="_blank">GitHub repo</a> -- if you want to try out these additions yourself then you'll need to install the customized app from the repo.
+Note that modifications to the UI like this are only possible if you tweak BloodHound's source. I'm compiling all of my UI enhancements into a <a href="https://github.com/porterhau5/BloodHound" target="_blank">GitHub repo</a> -- if you want to try out these additions yourself then you'll need to install the customized app from the repo.
 
-For those interested, here's a sample of the changes made to `src/components/SearchContainer/Tabs/UserNodeData.jsx` ([diff here](https://github.com/porterhau5/BloodHound/commit/68e6755902bb32b6552dc43e51a28c53db3e542a#diff-7e83a7fef612c20afca93946a8e057ba)):
+For those interested, here's a sample of the changes made to `src/components/SearchContainer/Tabs/UserNodeData.jsx` to make this happen ([diff here](https://github.com/porterhau5/BloodHound/commit/68e6755902bb32b6552dc43e51a28c53db3e542a#diff-7e83a7fef612c20afca93946a8e057ba)):
 {% highlight javascript %}
 var s8 = driver.session()
 var s9 = driver.session()
@@ -248,7 +248,7 @@ ACLAUSS@INTERNAL.LOCAL
 <snipped>
 {% endhighlight %}
 
-With `-e`, you can see some of the useful Cypher queries used throughout this blog post (some are slightly modified for query performance):
+With `-e`, you can see some of the useful Cypher queries used throughout this blog post (some are slightly modified to improve query performance):
 {% highlight plaintext %}
 $ ruby bh-owned.rb -e
 Find all owned Domain Admins:
@@ -295,7 +295,7 @@ The script will first query the database and determine the latest wave added -- 
 
 Once the wave number is determined, the script takes the following steps:
 
- * Creates the Cypher queries to add the nodes
+ * Creates the Cypher queries to set properties on the owned nodes
  * Creates the Cypher query to find the spread of compromise for the new wave
  * Wraps it all in JSON
  * POSTs the request to the REST endpoint
@@ -303,7 +303,7 @@ Once the wave number is determined, the script takes the following steps:
 Let's look at the result for this third wave in BloodHound:
 <a href="{{ site.urlimg }}wave3.png" target="_blank"><img src="{{ site.urlimg }}wave3.png"></a>
 
-Turns out this wave wasn't very exciting ¯\\\_(ツ)\_/¯ And we still have to type in our custom query in order to display the graph in BloodHound. Let's remove that hassle and take it a step further by tweaking the UI.
+Turns out this wave wasn't very exciting ¯\\\_(ツ)\_/¯ And we still have to type in our custom query in order to display the graph in BloodHound. Let's remove that hassle and take it a step further by tweaking the UI and writing some custom queries.
 
 ### UI Customizations and Custom Queries
 BloodHound added a feature in v1.2 to allow for custom queries (more info on <a href="https://blog.cptjesus.com/posts/introtocypher#building-on-top" target="_blank">CptJesus's blog</a>). This has the same effect as adding a pre-built query on the Queries tab, but the configuration file has been decoupled from the project's source code. I found this file in OS X at `~/Library/Application Support/bloodhound/customqueries.json`.
@@ -316,7 +316,7 @@ I've added four custom queries ([source here](https://github.com/porterhau5/Bloo
  * __Show wave__: Show only the nodes compromised in a selected wave. Useful for focusing in on newly-compromised nodes.
  * __Show delta for wave__: Show all compromised nodes up to a selected wave, and will highlight the nodes gained in that wave. Useful for visualizing privilege gains as access expands.
 
-If you're using the <a href="https://github.com/porterhau5/BloodHound" target="_blank">customized BloodHound app</a>, these queries will highlight <font color="#C900FF">nodes of interest</font> in the graph. Here's the custom queries and UI enhancements in context of our example penetration test:
+If you're using the <a href="https://github.com/porterhau5/BloodHound" target="_blank">customized BloodHound app</a>, these queries will highlight <font color="#C900FF">nodes of interest</font> in the graph as well. Let's see the custom queries and UI enhancements in context of our example penetration test:
 
 ##### Find all owned Domain Admins
 Let's add two more nodes to our compromise:
@@ -337,7 +337,7 @@ $ ruby bh-owned.rb -a 4th-wave.txt
 And now click on the "Find all owned Domain Admins" custom query:
 <a href="{{ site.urlimg }}find-all-owned-das.png" target="_blank"><img src="{{ site.urlimg }}find-all-owned-das.png"></a>
 
-Boom, we got one. Notice that a <font color="#C900FF">magenta lightning bolt</font> appears on the top-left of nodes relevant to our custom query. Like the additions to the Node Info tab, this feature is currently only available in my <a href="https://github.com/porterhau5/BloodHound" target="_blank">forked BloodHound repo</a>.
+Boom, we got one. Notice that a <font color="#C900FF">magenta lightning bolt</font> appears on the top-left of nodes relevant to our custom query. Like the additions to the Node Info tab, this feature is currently only available in the <a href="https://github.com/porterhau5/BloodHound" target="_blank">modified version</a> of BloodHound.
 
 ##### Find Shortest Paths from owned node to Domain Admins
 This is the same as the "Find Shortest Paths to Domain Admins", but we're focusing on nodes we've owned. You'll see in this graph that the two starting nodes, FILESERVER6 and BGRIFFIN, are marked with our owned icon:
@@ -371,6 +371,7 @@ Here's a couple ideas for taking this a little further. Hopefully I'll have time
  * Make "Owned in Wave" and "Owned via Method" values fillable from the UI. Ditch the need for an external script to ingest data.
  * General query optimizations to help with scalability & speed. The graphs can get a little messy when a DA account is obtained.
 
+Thank you for reading!
 
 #### Share
 <ul class="share-buttons">
