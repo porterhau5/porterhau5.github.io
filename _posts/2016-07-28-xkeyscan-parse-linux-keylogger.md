@@ -16,7 +16,7 @@ image:
 author: porterhau5
 ---
 ### Background
-A colleague of mine, Sanjiv Kawa, came across a nifty technique for capturing the keystrokes of users on an X-based system. I encourage you to check out <a href="https://www.popped.io/2016/06/natively-keylogging-nix-systems.html" target="_blank">his post here</a>, where Sanjiv walks through the process of using `xinput` to find input devices and then sets up the keylogger for capture. It's a particularly useful technique against those utilizing GNOME, KDE, or Xfce desktop environments, common on many *nix systems. It has the added bonus of not requiring root privileges to pull off.
+A colleague of mine, Sanjiv Kawa, came across a nifty technique for capturing the keystrokes of users on an X-based system. I encourage you to check out <a href="https://popped.io/natively-keylogging-nix-systems/" target="_blank">his post here</a>, where Sanjiv walks through the process of using `xinput` to find input devices and then sets up the keylogger for capture. It's a particularly useful technique against those utilizing GNOME, KDE, or Xfce desktop environments, common on many *nix systems. It has the added bonus of not requiring root privileges to pull off.
 
 For archival's sake, the process boils down to:
 
