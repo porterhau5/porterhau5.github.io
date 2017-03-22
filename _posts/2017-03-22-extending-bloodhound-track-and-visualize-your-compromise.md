@@ -362,7 +362,7 @@ If wave 3 is selected, the graph shows waves 1-3 then highlights the nodes from 
 I like this graph for visualizing the changes in privilege gains as it pertains to the greater context of the penetration test. Clients like it too for the same reason -- it's an effective visual aide for explaining the collateral risk of each User or Computer you compromise.
 
 ### Next Steps
-Here's a couple ideas for taking this a little further. Hopefully I'll have time to tinker with these in the coming weeks. I'll post updates here on the blog and on <a href="https://twitter.com/porterhau5" target="_blank">Twitter via @porterhau5</a>. Please reach out if you want to explore some of these together! I'd really appreciate some help from those of you who are skilled with front-end development :D
+Here's a couple ideas for taking this a little further. Hopefully I'll have time to tinker with these in the coming weeks. I'll post updates here and on <a href="https://twitter.com/porterhau5" target="_blank">Twitter via @porterhau5</a>. Please reach out if you want to explore some of these together! I'd really appreciate some help from those of you who are skilled with front-end development :D
 
  * Create a new relationship (maybe "SharesPasswordWith"?) that can be used between User nodes or Computer nodes to show password reuse. A User might use the same password for their normal account and their DA account. A Computer might use the same local admin password as another Computer's local admin. Expressing this in the form of a relationship allows us to leverage BloodHound's pre-built queries.
  * Instead of running custom queries through the Queries tab, have a slider on the main dashboard that can step through waves.
