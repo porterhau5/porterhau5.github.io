@@ -35,7 +35,7 @@ My workflow stems from being a penetration tester. The value derived from BloodH
 
 Whenever I obtain a new account or pop a shell on an engagement, one of the first things I do is run over to BloodHound and fire up the Pathfinding feature. I input the User's/Computer's name as my source and select Domain Admins as my target. The query only returns data when a path exists -- awesome when it happens, but disappointing when it comes back empty. This process is a little tedious, and it lacks showing me the true privilege gains that come along with obtaining a new account/computer. This looked like an opportunity to add in a feature that could make my life easier as a penetration tester.
 
-###Opportunities to Extend BloodHound
+### Opportunities to Extend BloodHound
 As I contemplated how to add this functionality into BloodHound, I thought more about my workflow and how compromises often unfold. Privilege gains during a penetration test usually happen in waves. For example, an assessment might start out like:
 
 1. Intercept LLMNR requests, collect and crack NTLMv2 hashes. 2 accounts obtained.
@@ -49,7 +49,7 @@ Let's use BloodHound to answer a simple question: When a new set of nodes are <u
 
 We'll leverage this notion, that a node can be "owned" during a "wave" of compromise, to build some useful features.
 
-###Tracking Compromised Users and Computers
+### Tracking Compromised Users and Computers
 Going deeper means understanding a little bit about Neo4j and it's query language, Cypher. I _highly_ recommend reading Rohan Vazarkar's <a href="https://blog.cptjesus.com/posts/introtocypher" target="_blank">Intro to Cypher</a> blog post, as I'll skip over some of the introductory concepts. Rohan covers BloodHound's current node and relationship structure, as well as some of the core analytics currently packed into BloodHound.
 
 In it's current version, BloodHound stores one property for each node: `name`. Depending on the type of node, this will be one of:
@@ -131,7 +131,7 @@ s9.run("MATCH (n {name:{name}}) RETURN n.owned", {name:payload})
 {% endhighlight %}
 
 
-###Finding the Collateral Spread When a Node is Compromised
+### Finding the Collateral Spread When a Node is Compromised
 When we designate a node as owned, we want to see the ripple effect across the network. With our `wave` property set, we can find those outbound paths like this:
 {% highlight plaintext %}
 MATCH (n)-[r*]->(m) WHERE n.wave=1 RETURN n,r,m
@@ -185,7 +185,7 @@ MATCH (n) WHERE n.wave=1 RETURN n.name
 
 Simple enough, right? Let's build on these queries.
 
-###Showing Changes in Privilege Gains
+### Showing Changes in Privilege Gains
 We have a way for marking nodes as owned, and we can view the ripple effect of a wave. What happens when we compromise a disjoint set of nodes via some new method? What does the delta in our access look like? It would be terrific if we could see what's available to us now that wasn't available to us before.
 
 We can use the same queries as before, but we'll want to be careful not to overwrite data from previous waves. How do we know which nodes we compromised in previous waves? Each compromised node has a `wave` property that already exists. If we detect that this property exists, then we know not to include it in the new wave. This can be done in Cypher by negating the `EXISTS` function:
@@ -217,7 +217,7 @@ And now the graph showing the second wave. This represents the delta after our p
 
 That's handy. Now I know which machines I should go plunder for sensitive documents, local hashes, cached passwords, etc.
 
-###Automating the Workflow
+### Automating the Workflow
 It's tedious to manually run these queries each time a node is compromised. Thankfully, Neo4j's REST API makes automation possible. With a simple Ruby script, we can leverage the same endpoint used by `Export-BloodHoundData` to ingest data directly across the network:
 
 {% highlight plaintext %}
@@ -305,7 +305,7 @@ Let's look at the result for this third wave in BloodHound:
 
 Turns out this wave wasn't very exciting ¯\\\_(ツ)\_/¯ And we still have to type in our custom query in order to display the graph in BloodHound. Let's remove that hassle and take it a step further by tweaking the UI.
 
-###UI Customizations and Custom Queries
+### UI Customizations and Custom Queries
 BloodHound added a feature in v1.2 to allow for custom queries (more info on <a href="https://blog.cptjesus.com/posts/introtocypher#building-on-top" target="_blank">CptJesus's blog</a>). This has the same effect as adding a pre-built query on the Queries tab, but the configuration file has been decoupled from the project's source code. I found this file in OS X at `~/Library/Application Support/bloodhound/customqueries.json`.
 
 I've added four custom queries ([source here](https://github.com/porterhau5/BloodHound-Owned/blob/master/customqueries.json)):
@@ -318,7 +318,7 @@ I've added four custom queries ([source here](https://github.com/porterhau5/Bloo
 
 If you're using the <a href="https://github.com/porterhau5/BloodHound" target="_blank">customized BloodHound app</a>, these queries will highlight <font color="#C900FF">nodes of interest</font> in the graph. Here's the custom queries and UI enhancements in context of our example penetration test:
 
-#####Find all owned Domain Admins
+##### Find all owned Domain Admins
 Let's add two more nodes to our compromise:
 {% highlight plaintext %}
 $ cat 4th-wave.txt
@@ -361,7 +361,7 @@ If wave 3 is selected, the graph shows waves 1-3 then highlights the nodes from 
 
 I like this graph for visualizing the changes in privilege gains as it pertains to the greater context of the penetration test. Clients like it too for the same reason -- it's an effective visual aide for explaining the collateral risk of each User or Computer you compromise.
 
-###Next Steps
+### Next Steps
 Here's a couple ideas for taking this a little further. Hopefully I'll have time to tinker with these in the coming weeks. I'll post updates here on the blog and on <a href="https://twitter.com/porterhau5" target="_blank">Twitter via @porterhau5</a>. Please reach out if you want to explore some of these together! I'd really appreciate some help from those of you who are skilled with front-end development :D
 
  * Create a new relationship (maybe "SharesPasswordWith"?) that can be used between User nodes or Computer nodes to show password reuse. A User might use the same password for their normal account and their DA account. A Computer might use the same local admin password as another Computer's local admin. Expressing this in the form of a relationship allows us to leverage BloodHound's pre-built queries.
