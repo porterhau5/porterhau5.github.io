@@ -13,9 +13,10 @@ image:
     thumb: spw-banner-thumb.png
 author: porterhau5
 ---
-This is another installment in a series of posts regarding modifications to BloodHound and lessons learned while working with Neo4j & Cypher. The first post can be found here:
+This is another installment in a series of posts regarding modifications to BloodHound and lessons learned while working with Neo4j & Cypher. Other posts can be found here:
 
  * [Visualizing and Tracking Your Compromise](/blog/extending-bloodhound-track-and-visualize-your-compromise/)
+ * [Creating Conditional Statements with Cypher](/blog/creating-conditional-statements-with-cypher/)
 
 This post will cover a new relationship added to the BloodHound Owned extensions: `SharesPasswordWith`. Check out the <a href="https://github.com/porterhau5/BloodHound-Owned" target="_blank">GitHub BloodHound-Owned</a> project for the latest code update. Here's what it looks like in action:
 
@@ -104,7 +105,7 @@ To supplement this, I also created a Custom Query to highlight all instances of 
 
 Pretty self-explanatory. The Cypher query used to make this graph looks like:
 {% highlight plaintext %}
-MATCH p=(n)-[r:SharesPasswordWith]-(m) RETURN p
+MATCH p=(n)-[r:SharesPasswordWith]->(m) RETURN p
 {% endhighlight %}
 
 The graph can become a little hard to interpret when working with a high volume of nodes. I think a future enhancement will be to add a third layout type (joining Directed and Hierarchical) that shows a radial graph output for this query. Doing so will require updating the BloodHound source and learning more about Linkurious and Sigma.

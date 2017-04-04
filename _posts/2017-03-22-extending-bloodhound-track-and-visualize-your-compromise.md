@@ -13,6 +13,11 @@ image:
     thumb: bloodhound-banner-thumb.png
 author: porterhau5
 ---
+This is the first installment in a series of posts regarding modifications to BloodHound and lessons learned while working with Neo4j & Cypher. Other posts can be found here:
+
+ * [Representing Password Reuse in BloodHound](/blog/representing-password-reuse-in-bloodhound/)
+ * [Creating Conditional Statements with Cypher](/blog/creating-conditional-statements-with-cypher/)
+
 If you're new to BloodHound, I highly recommend checking out <a href="https://wald0.com/?p=68" target="_blank">this blog</a>, <a href="https://www.youtube.com/watch?v=wP8ZCczC1OU" target="_blank">this video</a>, or <a href="https://github.com/BloodHoundAD/BloodHound/wiki" target="_blank">this wiki</a> to familiarize yourself. The work being done by <a href="https://twitter.com/_wald0" target="_blank">_wald0</a>, <a href="https://twitter.com/CptJesus" target="_blank">CptJesus</a>, and <a href="https://twitter.com/harmj0y" target="_blank">harmj0y</a> is changing how red and blue teams approach risk in Active Directory environments.
 
 This post will cover how I've adapted BloodHound to enhance my workflow during a penetration test, complete with example usage and a source code release. It's a bit verbose -- I wanted to include why I saw an opportunity for these changes and the process for creating them. If you'd like to skip to the new features then start [here](#automating-the-workflow).
