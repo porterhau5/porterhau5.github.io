@@ -193,7 +193,7 @@ CASE
   ELSE 3
 END AS result
 {% endhighlight %}
-The problem is that `CASE` is limited to returning a literal expression. We can't put clauses like `SET` or `MATCH` inside a `THEN`. That makes is difficult to do something like setting a property conditionally.
+The problem is that `CASE` is limited to returning a literal expression. We can't put clauses like `SET` or `MATCH` inside a `THEN`. That makes it difficult to do something like setting a property conditionally.
 
 What we can do though is nest a `CASE` statement inside a `FOREACH` clause (<a href="https://neo4j.com/docs/developer-manual/current/cypher/clauses/foreach/" target="_blank">FOREACH documentation here</a>). `FOREACH` will loop through a list or a path and pass each matching element to a clause (like `SET`):
 {% highlight plaintext %}
