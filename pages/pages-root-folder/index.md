@@ -11,12 +11,12 @@ widget1:
   title: "About"
   url: '/about/'
   image: WWHF1-303x182.jpg
-  text: 'Just a guy with a beard who likes to understand how things work. And tacos. Lots of tacos.'
+  text: "Just a guy with a beard who enjoys reading, researching, solving, and sharing. And tacos."
 widget2:
   title: "Blog"
   url: '/blog/'
   image: "photo-unsplash-kitsune-3-frontpage.jpg"  
-  text: "Ramblings about penetration testing, scripts that make my life easier, and how bad the Braves will be this season."
+  text: "Ramblings about red teaming, penetration testing, and the miscellaneous things I learned the hard way."
 widget3:
   title: "Projects"
   url: '/projects/'
